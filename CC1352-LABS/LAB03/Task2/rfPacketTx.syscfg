@@ -1,0 +1,48 @@
+// These arguments were used when this file was generated. They will be automatically applied on subsequent loads 
+// via the GUI or CLI invocations. Run CLI with '--help' for additional information on how to override these arguments.
+// @cliArgs --board "/ti/boards/CC1352R1_LAUNCHXL" --product "simplelink_cc13x2_26x2_sdk@3.30.00.03"
+// @versions {"data":"2019083011","timestamp":"2019083011","tool":"1.2.952","templates":"2019083011"}
+
+var RF = scripting.addModule("/ti/drivers/RF");
+var Power = scripting.addModule("/ti/drivers/Power");
+var CCFG = scripting.addModule("/ti/devices/CCFG");
+var Board = scripting.addModule("/ti/drivers/Board");
+var DriverLib = scripting.addModule("/ti/devices/DriverLib");
+var GPIO = scripting.addModule("/ti/drivers/GPIO");
+var GPIO1 = GPIO.addInstance();
+var custom = scripting.addModule("/ti/radioconfig/custom");
+var multi_stack_validate = scripting.addModule("/ti/easylink/multi_stack_validate");
+// Enable Bootloader - Enable ROM Bootloader, for flashing from external host
+CCFG.enableBootloader = true;
+// Enable Bootloader Backdoor - When enabling the Bootloader Backdoor, the Bootloader can be activated externally by pulling a pin, even when a valid flash image is present. Note, enabling the backdoor allows an external host to read back a flash image from the device
+CCFG.enableBootloaderBackdoor = true;
+// Bootloader Backdoor DIO - DIO (pin) to trigger Bootloader backdoor, this pin is only needed at boot
+CCFG.dioBootloaderBackdoor = 15;
+// Trigger Level of Bootloader Backdoor - Active high or low on selected DIO to open boot loader backdoor
+CCFG.levelBootloaderBackdoor = "Active low";
+// Force VDDR - Necessary for external load mode, or for maximum PA output power
+CCFG.forceVddr = true;
+// Name
+CCFG.ccfgTemplate.$name = "ti_devices_CCFGTemplate0";
+// Use Hardware - Select the hardware to use, or 'None' to use available header pins
+GPIO1.$hardware = system.deviceData.board.components.LED_GREEN;
+// Name - The C/C++ identifier used in applications as the index parameter passed to GPIO runtime APIs
+GPIO1.$name = "CONFIG_GPIO_GLED";
+// Name
+GPIO1.pinInstance.$name = "CONFIG_PIN_RLED";
+// Proprietary (779 - 930 MHz) - Select PHY settings to be included in the generated code
+custom.prop8 = ["custom868"];
+// PHY Type - Selects the PHY/setting
+custom.radioConfigcustom868.phyType868 = "2gfsk50kbps";
+// Fixed Packet Length - The fixed packet length will not be part of the packet data.
+custom.radioConfigcustom868.fixedPacketLength = 30;
+// Name
+custom.radioConfigcustom868.$name = "RF_Custom_Setting";
+// Name
+custom.radioConfigcustom868.codeExportConfig.$name = "ti_radioconfig_code_export_param0";
+// Use Multi-protocol patch - Use multi-protocol rather than individual protocol patches
+custom.radioConfigcustom868.codeExportConfig.useMulti = true;
+// Symbol Name Generation Method
+custom.radioConfigcustom868.codeExportConfig.symGenMethod = "Legacy";
+// Suggest solution
+GPIO1.gpioPin.$suggestSolution = "12";

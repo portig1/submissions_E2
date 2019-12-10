@@ -1,0 +1,34 @@
+// These arguments were used when this file was generated. They will be automatically applied on subsequent loads 
+// via the GUI or CLI invocations. Run CLI with '--help' for additional information on how to override these arguments.
+// @cliArgs --board "/ti/boards/CC1352R1_LAUNCHXL" --product "simplelink_cc13x2_26x2_sdk@3.30.00.03"
+// @versions {"data":"2019083011","timestamp":"2019083011","tool":"1.2.952","templates":"2019083011"}
+
+var RTOS = scripting.addModule("/ti/drivers/RTOS");
+var GPIO = scripting.addModule("/ti/drivers/GPIO");
+var GPIO1 = GPIO.addInstance();
+var ADC = scripting.addModule("/ti/drivers/ADC");
+var ADC1 = ADC.addInstance();
+var Power = scripting.addModule("/ti/drivers/Power");
+var CCFG = scripting.addModule("/ti/devices/CCFG");
+// Name
+CCFG.ccfgTemplate.$name = "ti_devices_CCFGTemplate0";
+var Board = scripting.addModule("/ti/drivers/Board");
+var DriverLib = scripting.addModule("/ti/devices/DriverLib");
+// Use Hardware - Select the hardware to use, or 'None' to use available header pins
+GPIO1.$hardware = system.deviceData.board.components.LED_RED;
+// Name - The C/C++ identifier used in applications as the index parameter passed to GPIO runtime APIs
+GPIO1.$name = "CONFIG_GPIO_LED_0";
+// Name
+GPIO1.pinInstance.$name = "CONFIG_PIN_0";
+// Name - The C/C++ identifier used in applications as the index parameter passed to ADC runtime APIs
+ADC1.$name = "CONFIG_ADC_0";
+// Name
+ADC1.adc.$name = "MyADC1";
+// Name
+ADC1.adcPinInstance.$name = "CONFIG_PIN_1";
+// Suggest solution
+GPIO1.gpioPin.$suggestSolution = "11";
+// Suggest solution
+ADC1.adc.$suggestSolution = "ADC0";
+// Suggest solution
+ADC1.adc.adcPin.$suggestSolution = "36";
