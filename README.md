@@ -8,4 +8,5 @@ TivaC Labs 3 to 9
 TivaC Midterm
 TivaC TIRTOS Labs 4 to 8
 TivaC TIRTOS Assignment
-CC135X Lab 1, 2 and some of 3
+CC135X Lab 1, 2, some of 3 and 5
+
